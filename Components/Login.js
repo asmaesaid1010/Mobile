@@ -3,7 +3,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import firebase from '../database/firebase'
-
+import Navigation from '../Navigation/Navigation'
 
 class Login extends React.Component {
 
@@ -40,7 +40,11 @@ class Login extends React.Component {
                         email: '',
                         password: ''
                     })
-                    this.props.navigation.navigate('Search')
+                      this.props.navigation.navigate('Search')
+                  
+                
+                   
+
                 })
                 .catch(error => this.setState({ errorMessage: error.message }))
         }

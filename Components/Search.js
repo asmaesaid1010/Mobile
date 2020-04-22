@@ -66,15 +66,7 @@ class Search extends React.Component {
       <View style={styles.main_container}>
 
 
-        <TouchableOpacity
-          // onPress={() =>   {alert('okkkkk')} }
-          onPress={() => this.props.navigation.navigate('Test', {
-            postId: 3006,
-            otherParam: 'Pass whatever you want here',
-          })} >
-
-          <Text> click here</Text>
-        </TouchableOpacity>
+       
 
         <TextInput
           style={styles.textinput}
