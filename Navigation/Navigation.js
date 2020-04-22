@@ -11,14 +11,44 @@ import FilmDetail from "../Components/FilmDetail";
 import FilmItem from "../Components/FilmItem";
 import Test from "../Components/Test";
 import Favorites from '../Components/Favorites';
-
+import Login from '../Components/Login';
+import Signup from '../Components/Signup';
 const Stack = createStackNavigator();
 const StackF = createStackNavigator();
 
+
+
+
 function StackSearch() {
     return (
+        <Stack.Navigator
+            initialRouteName="Signup"
+            screenOptions={{
+                headerTitleAlign: 'center',
+                headerStyle: {
+                    backgroundColor: '#3740FE',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                },
+            }}>
+            <Stack.Screen
+                name="Signup"
+                component={Signup}
+                options={{ title: 'Signup' }}
+            />
+            <Stack.Screen
+                name="Login"
+                component={Login}
+                options={
+                    { title: 'Login' },
+                    { headerLeft: null }
+                }
+            />
 
-        <Stack.Navigator>
+
+
             <Stack.Screen
                 name="Search"
                 component={Search}
@@ -47,7 +77,31 @@ function StackSearch() {
 function StackFavorites() {
     return (
 
-        <StackF.Navigator>
+        <StackF.Navigator
+            initialRouteName="Signup"
+            screenOptions={{
+                headerTitleAlign: 'center',
+                headerStyle: {
+                    backgroundColor: '#3740FE',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                },
+            }}>
+            <StackF.Screen
+                name="Signup"
+                component={Signup}
+                options={{ title: 'Signup' }}
+            />
+            <StackF.Screen
+                name="Login"
+                component={Login}
+                options={
+                    { title: 'Login' },
+                    { headerLeft: null }
+                }
+            />
             <StackF.Screen
                 name="Favorites"
                 component={Favorites}
@@ -59,7 +113,7 @@ function StackFavorites() {
                 component={FilmDetail}
                 options={{ title: 'FilmDetail' }}
             />
-            
+
         </StackF.Navigator>
 
     );
@@ -97,8 +151,8 @@ function App() {
                     showIcon: true // On informe le TabNavigator qu'on souhaite afficher les icônes définis
                 }}
             >
-                <Tab.Screen name="Search" component={StackSearch}    />
-                <Tab.Screen name="Favorites" component={StackFavorites}   />
+                <Tab.Screen name="Search" component={StackSearch} />
+                <Tab.Screen name="Favorites" component={StackFavorites} />
             </Tab.Navigator>
         </NavigationContainer>
     );
