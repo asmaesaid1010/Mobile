@@ -4,7 +4,7 @@ import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native'
 import FilmList from './FilmList'
 import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi'
-
+import firebase from '../database/firebase'
 
 
 
@@ -21,6 +21,7 @@ class Search extends React.Component {
       isLoading: false
     }
     this._loadFilms = this._loadFilms.bind(this)
+     
   }
 
   _loadFilms() {
@@ -60,10 +61,24 @@ class Search extends React.Component {
       )
     }
   }
-
+  signOut = () => {
+    firebase.auth().signOut().then(() => {
+      this.props.navigation.navigate('Login')
+    })
+      .catch(error => this.setState({ errorMessage: error.message }))
+  }
   render() {
     return (
       <View style={styles.main_container}>
+
+
+        <Button
+          color="#3740FE"
+          title="Logout"
+          
+          onPress={() => this.signOut()}
+        />
+
         <TextInput
           style={styles.textinput}
           placeholder='Titre du film'
